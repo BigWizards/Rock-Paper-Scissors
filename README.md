@@ -1,0 +1,1 @@
+My project for The Odin Project to recreate the game Rock Paper Scissors using Javascript.

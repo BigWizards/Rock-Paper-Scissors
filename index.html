@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<body>
+    <script>
+        function computerPlay() {
+         let randomNum = Math.random();
+         if (randomNum < 0.33) {
+             return "rock"
+         }
+         else if (randomNum > 0.66){
+             return "paper"
+         }
+         else {
+             return "scissors"
+         }
+         };
+
+        function playRound(playerSelection, computerSelection) {
+            playerSelection = playerSelection.toLowerCase()
+            let result = (playerSelection == "rock" && computerSelection == "scissors") ? "You Win! Rock beats Scissors" : 
+            (playerSelection == "rock" && computerSelection == "paper") ? "You Lose! Paper beats Rock" : 
+            (playerSelection == "rock" && computerSelection == "rock") ? "Rock on Rock? It's a Draw!" : 
+            (playerSelection == "paper" && computerSelection == "rock") ? "You Win! Paper beats Rock" : 
+            (playerSelection == "paper" && computerSelection == "scissors") ? "You Lose! Scissors beats Paper" : 
+            (playerSelection == "paper" && computerSelection == "paper") ? "Paper on Paper? It's a Draw!" :
+            (playerSelection == "scissors" && computerSelection == "paper") ? "You Win! Scissors beats Paper" : 
+            (playerSelection == "scissors" && computerSelection == "rock") ? "You Lose! Rock beats Scissors" : 
+            (playerSelection == "scissors" && computerSelection == "scissors") ? "Scissors on Scissors? It's a Draw!" : 
+            "Something went wrong...";
+
+            return result;
+        } 
+
+        function game() {
+            let playerScore = 0;
+            let computerScore = 0;
+            while (playerScore < 3 && computerScore < 3) {
+                playerSelection = prompt("Let's play ROCK PAPER SCISSORS! First to 3, Wins!")
+                computerSelection = computerPlay()
+                let result = playRound(playerSelection, computerSelection)
+                if (result.charAt(4) == "W") {
+                    playerScore += 1;
+                } 
+                else if (result.charAt(4) == "L") {
+                    computerScore += 1;
+                }
+                alert(result);
+                alert("Your score: " + playerScore + " My Score: " + computerScore)
+            }
+            if (playerScore == 3) {
+                alert("You beat me. I'll get you next time.");
+            }
+            else {
+                alert("HA HA HA! I Win");
+            }
+        }
+
+        console.log(game())  
+    </script>
+</body>
